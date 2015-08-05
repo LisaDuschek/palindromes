@@ -1,13 +1,14 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/scrabble')
+require('./lib/palindromes')
+require('pry')
 also_reload('lib/**/*.rb')
 
 get('/') do
   erb(:index)
 end
 
-get('/score') do
-  @score = params.fetch('score').scrabble()
-  erb(:score)
+get('/result') do
+  @result = params.fetch('word').palindromes()
+  erb(:result)
 end
